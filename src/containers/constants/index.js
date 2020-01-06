@@ -8,7 +8,7 @@ export const STATUSES = [
     label: "IN PROCESS"
   },
   {
-    value: 3,
+    value: 1,
     label: "COMPLATED"
   }
 ];
