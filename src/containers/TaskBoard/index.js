@@ -6,6 +6,10 @@ import Container from '@material-ui/core/Container';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import { STATUSES } from './../constants';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
 const listTask = [{
     id: 1,
     title: 'Read book',
@@ -41,10 +45,15 @@ class TaskBoard extends Component {
                     listTask.map((listask, index)=> {
                         if(listask.status === status.value) {
                             return (
-                              <div key={index}>
-                                <h1>{listask.title}</h1>
-                                <p>{listask.description}</p>
-                              </div>
+                              <Card className={classes.card} key={index}>
+                                <CardContent>
+                                  <Typography variant="h5" component="h1">{listask.title}</Typography>
+                                  <Typography variant="h6" component="p">{listask.description}</Typography>
+                                </CardContent>
+                                <CardActions>
+                                  <Button size="small">Learn More</Button>
+                                </CardActions>
+                              </Card>
                             )
                         }
                     })
