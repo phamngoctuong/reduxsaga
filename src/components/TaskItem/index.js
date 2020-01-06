@@ -25,7 +25,7 @@ class TaskItem extends Component {
           </Grid>
         </Grid>
         </CardContent>
-        <CardActions>
+        <CardActions className={classes.cardAction}>
           <Fab color="primary">
             <Icon>edit</Icon>
           </Fab>
