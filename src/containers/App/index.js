@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import TaskBoad from './../TaskBoard';
 class App extends Component {
   render() {
     return (
-      <h1>This is Home Page</h1>
+      <TaskBoad></TaskBoad>
     );
   }
 }
