@@ -23,6 +23,7 @@ class TaskItem extends Component {
           <Grid item md={6}>
             <Typography variant="h6" component="p">{status.label}</Typography>
           </Grid>
+          <Typography  component="p">{listask.description}</Typography>
         </Grid>
         </CardContent>
         <CardActions className={classes.cardAction}>
