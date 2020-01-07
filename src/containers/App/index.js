@@ -10,6 +10,9 @@ import {STATUSES} from './../../constants';
 import Typography from '@material-ui/core/Typography';
 import TaskList from './../../components/TaskList';
 import TaskForm from './../../components/TaskForm';
+import { Provider } from 'react-redux';
+import configureStore from './../../redux/configureStore';
+const store = configureStore();
 class App extends Component {
   constructor(props) {
     super(props);
@@ -47,17 +50,19 @@ class App extends Component {
   render() {
     var {classes} = this.props;
     return (
-      <Container maxWidth="lg">
-        <div className="App">
-          <Button variant="contained" color="primary" onClick={this.openTask}><AddIcon/>&nbsp;Thêm công việc mới</Button>
-          <Box component="div" mt={2}>
-            <Grid container className={classes.root} spacing={1}>
-              {this.renderBoard()}
-              {this.renderForm()}
-            </Grid>
-          </Box>
-        </div>
-      </Container>
+      <Provider store={store}>
+        <Container maxWidth="lg">
+          <div className="App">
+            <Button variant="contained" color="primary" onClick={this.openTask}><AddIcon/>&nbsp;Thêm công việc mới</Button>
+            <Box component="div" mt={2}>
+              <Grid container className={classes.root} spacing={1}>
+                {this.renderBoard()}
+                {this.renderForm()}
+              </Grid>
+            </Box>
+          </div>
+        </Container>
+      </Provider>
     );
   }
 }
