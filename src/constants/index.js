@@ -1,14 +1,14 @@
 export const STATUSES = [
   {
     value: 0,
-    label: "READY"
-  },
-  {
-    value: 2,
-    label: "IN PROCESS"
+    label: "START"
   },
   {
     value: 1,
-    label: "COMPLATED"
+    label: "INPROCESS"
+  },
+  {
+    value: 2,
+    label: "COMPLATE"
   }
 ];
