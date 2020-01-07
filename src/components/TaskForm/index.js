@@ -7,19 +7,19 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
+import TextField from '@material-ui/core/TextField';
 class TaskForm extends Component {
   handleClose = () =>  {
     this.props.handleClose()
   }
   render() {
-    var {open} = this.props;
+    var {open, classes } = this.props;
     return (
       <Dialog open={open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Thêm mới công việc</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            <span>Dealog Content</span>
-          </DialogContentText>
+            <TextField id="standard-name" label="Name" className={classes.textField}  margin="normal" />
+            <TextField id="standard-multiline-flexible" label="Multiline" multiline rowsMax="4"  />
         </DialogContent>
         <DialogActions>
           <Button onClick={this.handleClose} color="primary">

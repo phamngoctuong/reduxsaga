@@ -1,5 +1,5 @@
 const styles = () => ({
-  cardAction: {
+  cardAction : {
     display: 'flex',
     justifyContent: 'flex-end'
   }
