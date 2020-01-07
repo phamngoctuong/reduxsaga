@@ -11,6 +11,10 @@ import {STATUSES} from './../../constants';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
 var taskList = [
   {
@@ -33,9 +37,26 @@ var taskList = [
   }
 ];
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false
+    };
+  }
+  handleClose = () => {
+    this.setState({
+      open: false
+    })
+  }
+  openTask = () => {
+    this.setState({
+      open: true
+    }) 
+  }
   renderBoard() {
     let xhtml = null;
     var {classes} = this.props;
+    var {open} = this.state;
     xhtml = (
       STATUSES.map((status,index)=> {
         return(
@@ -69,6 +90,21 @@ class App extends Component {
                     })
                   }
                 </Grid>
+                <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={open}>
+                  <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
+                    Modal title
+                  </DialogTitle>
+                  <DialogContent dividers>
+                    <Typography gutterBottom>
+                      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+                      in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                    </Typography>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button variant="contained" autoFocus onClick={this.handleClose} color="secondary">Cancel</Button>
+                    <Button variant="contained" autoFocus onClick={this.handleClose} color="primary">Oke</Button>
+                  </DialogActions>
+                </Dialog>
               </CardContent>
               <CardActions className={classes.CardAction}>
                 <Button variant="contained" size="small" color="primary"><EditIcon />&nbsp;Edit Task</Button>
@@ -86,7 +122,7 @@ class App extends Component {
     return (
       <Container maxWidth="lg">
         <div className="App">
-          <Button variant="contained" color="primary"><AddIcon/>&nbsp;Thêm công việc mới</Button>
+          <Button variant="contained" color="primary" onClick={this.openTask}><AddIcon/>&nbsp;Thêm công việc mới</Button>
           <Box component="div" mt={2}>
             <Grid container className={classes.root} spacing={1}>
               {this.renderBoard()}
