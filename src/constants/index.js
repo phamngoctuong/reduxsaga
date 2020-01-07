@@ -12,3 +12,4 @@ export const STATUSES = [
     label: "COMPLATE"
   }
 ];
+export const END_POINT = 'http://localhost:3000';
