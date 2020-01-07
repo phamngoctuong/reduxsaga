@@ -7,12 +7,9 @@ import Box from '@material-ui/core/Box';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import {STATUSES} from './../../constants';
-import Dialog from '@material-ui/core/Dialog';
-import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogActions from '@material-ui/core/DialogActions';
 import Typography from '@material-ui/core/Typography';
 import TaskList from './../../components/TaskList';
+import TaskForm from './../../components/TaskForm';
 class App extends Component {
   constructor(props) {
     super(props);
@@ -44,23 +41,7 @@ class App extends Component {
   renderForm() {
     var {open} = this.state;
     let xhtml = null;
-    xhtml = (
-      <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={open}>
-        <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
-          Modal title
-        </DialogTitle>
-        <DialogContent dividers>
-          <Typography gutterBottom>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          </Typography>
-        </DialogContent>
-        <DialogActions>
-          <Button variant="contained" autoFocus onClick={this.handleClose} color="secondary">Cancel</Button>
-          <Button variant="contained" autoFocus onClick={this.handleClose} color="primary">Oke</Button>
-        </DialogActions>
-      </Dialog>
-    );
+    xhtml = <TaskForm handleClose={this.handleClose} open={open} />
     return xhtml;
   }
   render() {
