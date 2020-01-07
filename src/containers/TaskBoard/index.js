@@ -9,7 +9,15 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import TaskList from './../../components/TaskList';
 import TaskForm from './../../components/TaskForm';
+import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as taskActions from './../../actions/task';
 class TaskBoard extends Component {
+	componentDidMount() {
+	    const {taskActionsCreators} = this.props;
+	    const {fetchListTask} = taskActionsCreators;
+	    fetchListTask();
+	}
 	renderBoard() {
     let xhtml = null;
     xhtml = (
@@ -50,4 +58,10 @@ class TaskBoard extends Component {
     );
   }
 }
-export default withStyles(styles)(TaskBoard);
+var mapStateToProps = null;
+var mapDispatchToProps = (dispatch) => {
+	return {
+		taskActionsCreators: bindActionCreators(taskActions,dispatch)
+	}
+}
+export default withStyles(styles)(connect(mapStateToProps,mapDispatchToProps)(TaskBoard));
