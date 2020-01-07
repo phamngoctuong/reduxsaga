@@ -56,7 +56,6 @@ class App extends Component {
   renderBoard() {
     let xhtml = null;
     var {classes} = this.props;
-    var {open} = this.state;
     xhtml = (
       STATUSES.map((status,index)=> {
         return(
@@ -90,21 +89,6 @@ class App extends Component {
                     })
                   }
                 </Grid>
-                <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={open}>
-                  <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
-                    Modal title
-                  </DialogTitle>
-                  <DialogContent dividers>
-                    <Typography gutterBottom>
-                      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-                      in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                    </Typography>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button variant="contained" autoFocus onClick={this.handleClose} color="secondary">Cancel</Button>
-                    <Button variant="contained" autoFocus onClick={this.handleClose} color="primary">Oke</Button>
-                  </DialogActions>
-                </Dialog>
               </CardContent>
               <CardActions className={classes.CardAction}>
                 <Button variant="contained" size="small" color="primary"><EditIcon />&nbsp;Edit Task</Button>
@@ -117,6 +101,28 @@ class App extends Component {
     );
     return xhtml
   }
+  renderForm() {
+    var {open} = this.state;
+    let xhtml = null;
+    xhtml = (
+      <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={open}>
+        <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
+          Modal title
+        </DialogTitle>
+        <DialogContent dividers>
+          <Typography gutterBottom>
+            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button variant="contained" autoFocus onClick={this.handleClose} color="secondary">Cancel</Button>
+          <Button variant="contained" autoFocus onClick={this.handleClose} color="primary">Oke</Button>
+        </DialogActions>
+      </Dialog>
+    );
+    return xhtml;
+  }
   render() {
     var {classes} = this.props;
     return (
@@ -126,6 +132,7 @@ class App extends Component {
           <Box component="div" mt={2}>
             <Grid container className={classes.root} spacing={1}>
               {this.renderBoard()}
+              {this.renderForm()}
             </Grid>
           </Box>
         </div>
