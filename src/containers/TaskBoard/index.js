@@ -7,11 +7,7 @@ import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
 import { STATUSES } from './../../constants';
 import TaskList from './../../components/TaskList';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import TaskForm from './../../components/TaskForm';
 class TaskBoard extends Component {
   constructor(props) {
     super(props);
@@ -48,22 +44,7 @@ class TaskBoard extends Component {
     var {open} = this.state;
     let xhmtl = null;
     xhmtl = (
-      <Dialog open={open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-        <DialogTitle id="form-dialog-title">Thêm mới công việc</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            <span>Dealog Content</span>
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={this.handleClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={this.handleClose} color="primary">
-            Ok
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <TaskForm open={open} handleClose={this.handleClose}/>
     );
     return xhmtl;
   }
