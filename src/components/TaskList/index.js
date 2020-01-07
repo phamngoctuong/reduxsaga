@@ -1,48 +1,73 @@
 import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles';
-import TaskItem from './../TaskItem';
-const listTask = [{
-    id: 1,
-    title: 'Read book',
-    description: 'Read material ui book',
-    status: 0,
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
+import EditIcon from '@material-ui/icons/Edit';
+var taskList = [
+  {
+    id: 0,
+    title: 'PLAYGAME',
+    description: 'Play with my Friend',
+    status: 0
   },
   {
     id: 2,
-    title: 'Play football',
-    description: 'With my friend',
-    status: 2,
+    title: 'SING A SONG',
+    description: 'Sing with my Friend',
+    status: 1
   },
   {
     id: 3,
-    title: 'Play game',
-    description: 'Alone 😊',
-    status: 1,
-  },
+    title: 'PLAY FOOTBALL',
+    description: 'Play Football with my Friend',
+    status: 2
+  }
 ];
 class TaskList extends Component {
   render() {
-    const {status,index} = this.props;
-    const { classes } = this.props;
+    var {classes, index, status} = this.props;
     return (
       <Grid key={index} item md={4}>
-        <Box my={2}>
-          <div className={classes.status}>{status.label}</div>
-        </Box>
-        <div className={classes.wrapperListTask}>
-          {
-            listTask.map((listask, index)=> {
-                if(listask.status === status.value) {
-                    return (
-                      <TaskItem listask={listask} status={status} key={index}/>
-                    )
-                }
-            })
-          }
-        </div>
+        <Card className={classes.card}>
+          <CardContent>
+            <Grid container spacing={1}>
+              {
+                taskList.map((task, index)=>{
+                    if(status.value === task.status) {
+                      return (
+                        <React.Fragment key={index}>
+                          <Grid item lg={6}>
+                            <Typography component="h2" className={classes.title} color="textSecondary">
+                              {task.title}
+                            </Typography>
+                          </Grid>
+                          <Grid item lg={6}>
+                            <Typography component="h3" className={classes.title} color="textSecondary">
+                              {status.label}
+                            </Typography>
+                          </Grid>
+                          <Grid item lg={12}>
+                            <Typography className={classes.title} color="textSecondary">
+                              {task.description}
+                            </Typography>
+                          </Grid>
+                        </React.Fragment>
+                      );
+                    }
+                })
+              }
+            </Grid>
+          </CardContent>
+          <CardActions className={classes.CardAction}>
+            <Button variant="contained" size="small" color="primary"><EditIcon />&nbsp;Edit Task</Button>
+            <Button variant="contained" size="small" color="secondary"><EditIcon />&nbsp;Delete Task</Button>
+          </CardActions>
+        </Card>
       </Grid>
     );
   }
