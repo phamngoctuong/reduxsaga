@@ -60,58 +60,60 @@ class App extends Component {
     xhtml = (
       STATUSES.map((status,index)=> {
         return(
-          <Grid key={index} item md={4}>
-            <Card className={classes.card}>
-              <CardContent>
-                <Grid container spacing={1}>
-                  {
-                    taskList.map((task, index)=>{
-                        if(status.value === task.status) {
-                          return (
-                            <React.Fragment key={index}>
-                              <Grid item lg={6}>
-                                <Typography component="h2" className={classes.title} color="textSecondary">
-                                  {task.title}
-                                </Typography>
-                              </Grid>
-                              <Grid item lg={6}>
-                                <Typography component="h3" className={classes.title} color="textSecondary">
-                                  {status.label}
-                                </Typography>
-                              </Grid>
-                              <Grid item lg={12}>
-                                <Typography className={classes.title} color="textSecondary">
-                                  {task.description}
-                                </Typography>
-                              </Grid>
-                            </React.Fragment>
-                          );
-                        }
-                    })
-                  }
-                </Grid>
-                <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={open}>
-                  <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
-                    Modal title
-                  </DialogTitle>
-                  <DialogContent dividers>
-                    <Typography gutterBottom>
-                      Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-                      in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-                    </Typography>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button variant="contained" autoFocus onClick={this.handleClose} color="secondary">Cancel</Button>
-                    <Button variant="contained" autoFocus onClick={this.handleClose} color="primary">Oke</Button>
-                  </DialogActions>
-                </Dialog>
-              </CardContent>
-              <CardActions className={classes.CardAction}>
-                <Button variant="contained" size="small" color="primary"><EditIcon />&nbsp;Edit Task</Button>
-                <Button variant="contained" size="small" color="secondary"><EditIcon />&nbsp;Delete Task</Button>
-              </CardActions>
-            </Card>
-          </Grid>
+          <React.Fragment>
+            <Grid key={index} item md={4}>
+              <Card className={classes.card}>
+                <CardContent>
+                  <Grid container spacing={1}>
+                    {
+                      taskList.map((task, index)=>{
+                          if(status.value === task.status) {
+                            return (
+                              <React.Fragment key={index}>
+                                <Grid item lg={6}>
+                                  <Typography component="h2" className={classes.title} color="textSecondary">
+                                    {task.title}
+                                  </Typography>
+                                </Grid>
+                                <Grid item lg={6}>
+                                  <Typography component="h3" className={classes.title} color="textSecondary">
+                                    {status.label}
+                                  </Typography>
+                                </Grid>
+                                <Grid item lg={12}>
+                                  <Typography className={classes.title} color="textSecondary">
+                                    {task.description}
+                                  </Typography>
+                                </Grid>
+                              </React.Fragment>
+                            );
+                          }
+                      })
+                    }
+                  </Grid>
+                </CardContent>
+                <CardActions className={classes.CardAction}>
+                  <Button variant="contained" size="small" color="primary"><EditIcon />&nbsp;Edit Task</Button>
+                  <Button variant="contained" size="small" color="secondary"><EditIcon />&nbsp;Delete Task</Button>
+                </CardActions>
+              </Card>
+              <Dialog onClose={this.handleClose} aria-labelledby="customized-dialog-title" open={open}>
+                <DialogTitle id="customized-dialog-title" onClose={this.handleClose}>
+                  Modal title
+                </DialogTitle>
+                <DialogContent dividers>
+                  <Typography gutterBottom>
+                    Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
+                    in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
+                  </Typography>
+                </DialogContent>
+                <DialogActions>
+                  <Button variant="contained" autoFocus onClick={this.handleClose} color="secondary">Cancel</Button>
+                  <Button variant="contained" autoFocus onClick={this.handleClose} color="primary">Oke</Button>
+                </DialogActions>
+              </Dialog>
+            </Grid>
+          </React.Fragment>
         );
       })
     );
