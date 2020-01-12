@@ -60,8 +60,8 @@ class App extends Component {
     xhtml = (
       STATUSES.map((status,index)=> {
         return(
-          <React.Fragment>
-            <Grid key={index} item md={4}>
+          <React.Fragment key={index}>
+            <Grid item md={4}>
               <Card className={classes.card}>
                 <CardContent>
                   <Grid container spacing={1}>
