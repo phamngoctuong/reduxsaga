@@ -34,6 +34,11 @@ class TaskBoard extends Component {
   state = {
     open: false,
   };
+  componentDidMount() {
+    const { taskActionCreators } = this.props;
+    const { fetchListTask } = taskActionCreators;
+    fetchListTask();
+  }
   handleClose = () => {
     this.setState({
       open: false,
