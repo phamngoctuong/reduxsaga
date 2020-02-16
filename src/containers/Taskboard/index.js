@@ -2,7 +2,6 @@ import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import AddIcon from '@material-ui/icons/Add';
 import { withStyles } from '@material-ui/styles';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import TaskForm from '../../components/TaskForm';
 import { STATUSES } from '../../constants';
@@ -36,8 +35,8 @@ class TaskBoard extends Component {
   };
   componentDidMount() {
     const { taskActionCreators } = this.props;
-    const { fetchListTask } = taskActionCreators;
-    fetchListTask();
+    const { fetchListTaskRequest } = taskActionCreators;
+    fetchListTaskRequest();
   }
   handleClose = () => {
     this.setState({
@@ -84,9 +83,6 @@ class TaskBoard extends Component {
     );
   }
 }
-TaskBoard.propTypes = {
-  classes: PropTypes.object,
-};
 const mapStateToProps = state => {
   return {
     listTask: state.task.listTask,

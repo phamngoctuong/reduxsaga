@@ -11,7 +11,7 @@ class AxiosService {
   }
 
   handleError(error) {
-    return Promise .reject(error);
+    return Promise.reject(error);
   }
 
   get(url) {
