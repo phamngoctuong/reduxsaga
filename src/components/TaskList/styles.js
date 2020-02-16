@@ -1,7 +1,3 @@
-const styles = () => ({
-  CardAction: {
-    display: 'flex',
-    justifyContent: 'flex-end'
-  }
-});
+const styles = () => ({});
+
 export default styles;
