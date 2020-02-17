@@ -1,9 +1,9 @@
 import {
-  // delay,
   fork,
   take,
   call,
   put,
+  delay,
   // select,
   // takeEvery,
   // takeLatest,
@@ -20,7 +20,7 @@ import {
   // updateTaskFailed,
   // updateTaskSuccess,
 } from '../actions/task';
-// import { hideLoading, showLoading } from '../actions/ui';
+import { hideLoading, showLoading } from '../actions/ui';
 // import { addTask, deleteTask, getList, updateTask } from './../apis/task';
 import { getList } from './../apis/task';
 // import { STATUSES, STATUS_CODE } from './../constants';
@@ -47,7 +47,7 @@ function* watchFetchListTaskAction() {
     } else {
       yield put(fetchListTaskFailed(data));
     }
-    // yield put(showLoading());
+    yield put(showLoading());
     // const { params } = action.payload;
     // const resp = yield call(getList, params);
     // const { status, data } = resp;
@@ -56,8 +56,8 @@ function* watchFetchListTaskAction() {
     // } else {
     //   yield put(fetchListTaskFailed(data));
     // }
-    // yield delay(1000);
-    // yield put(hideLoading());
+    yield delay(1000);
+    yield put(hideLoading());
   }
 }
 
