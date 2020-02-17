@@ -6,7 +6,7 @@ import Taskboard from '../Taskboard';
 import theme from './../../commons/Theme';
 import { Provider } from 'react-redux';
 import configureStore from '../../redux/configureStore';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const store = configureStore();
 class App extends Component {

@@ -25,9 +25,9 @@ export const fetchListTaskRequest = () => {
   return dispatch => {
   	dispatch(fetchListTask());
   	taskApis.getList().then(data => {
-  		dispatch(fetchListTaskSuccess(data));
+  		// dispatch(fetchListTaskSuccess(data));
   	}).catch(error => {
-  		dispatch(fetchListTaskFailed(error));
+  		// dispatch(fetchListTaskFailed(error));
   	})
   }
 };
