@@ -10,25 +10,26 @@ import styles from './styles';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as taskActions from './../../actions/task';
-const listTask = [{
-    id: 1,
-    title: 'Read book',
-    description: 'Read material ui book',
-    status: 0,
-  },
-  {
-    id: 2,
-    title: 'Play football',
-    description: 'With my friend',
-    status: 2,
-  },
-  {
-    id: 3,
-    title: 'Play game',
-    description: 'Alone 😊',
-    status: 1,
-  },
-];
+import SearchBox from '../../components/SearchBox';
+// const listTask = [{
+//     id: 1,
+//     title: 'Read book',
+//     description: 'Read material ui book',
+//     status: 0,
+//   },
+//   {
+//     id: 2,
+//     title: 'Play football',
+//     description: 'With my friend',
+//     status: 2,
+//   },
+//   {
+//     id: 3,
+//     title: 'Play game',
+//     description: 'Alone 😊',
+//     status: 1,
+//   },
+// ];
 class TaskBoard extends Component {
   state = {
     open: false,
@@ -43,12 +44,24 @@ class TaskBoard extends Component {
       open: false,
     });
   };
+  handleFilter = e => {
+    const { value } = e.target;
+    const { taskActionCreators } = this.props;
+    const { filterTask } = taskActionCreators;
+    filterTask(value);
+  };
   openForm = () => {
     this.setState({
       open: true,
     });
   };
+  renderSearchBox() {
+    let xhtml = null;
+    xhtml = <SearchBox handleChange={this.handleFilter} />;
+    return xhtml;
+  }
   renderBoard() {
+    const { listTask } = this.props;
     let xhtml = null;
     xhtml = (
       <Grid container spacing={2}>
@@ -77,6 +90,7 @@ class TaskBoard extends Component {
         <Button variant="contained" color="primary" className={classes.button} onClick={this.openForm}>
           <AddIcon /> Thêm mới công việc
         </Button>
+        {this.renderSearchBox()}
         {this.renderBoard()}
         {this.renderForm()}
       </div>

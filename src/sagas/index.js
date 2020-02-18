@@ -4,9 +4,9 @@ import {
   call,
   put,
   delay,
-  // select,
+  takeLatest,
+  select,
   // takeEvery,
-  // takeLatest,
 } from 'redux-saga/effects';
 // import { hideModal } from '../actions/modal';
 import {
@@ -62,8 +62,10 @@ function* watchFetchListTaskAction() {
 }
 
 function* filterTaskSaga({ payload }) {
-  // yield delay(500);
-  // const { keyword } = payload;
+  yield delay(500);
+  const { keyword } = payload;
+  const list = yield select(state => state.task.listTask);
+  console.log(list);
   // yield put(
   //   fetchListTask({
   //     q: keyword,
@@ -126,7 +128,7 @@ function* deleteTaskSaga({ payload }) {
 }
 function* rootSaga() {
   yield fork(watchFetchListTaskAction);
-  // yield takeLatest(taskTypes.FILTER_TASK, filterTaskSaga);
+  yield takeLatest(taskTypes.FILTER_TASK, filterTaskSaga);
   // yield takeEvery(taskTypes.ADD_TASK, addTaskSaga);
   // yield takeLatest(taskTypes.UPDATE_TASK, updateTaskSaga);
   // yield takeLatest(taskTypes.DELETE_TASK, deleteTaskSaga);
