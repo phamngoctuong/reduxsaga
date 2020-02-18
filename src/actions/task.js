@@ -1,16 +1,18 @@
-import * as taskApis from './../apis/task';
-import * as taskContants from './../constants/task';
-//Kiểm tra xem nó có gọi API đc hay không
-//Ko cài redux-thunk bị lỗi nhé
-export const fetchListTask = () => {
+import * as taskConstants from './../constants/task';
+import { STATUSES } from './../constants';
+
+export const fetchListTask = (params = {}) => {
   return {
-    type: taskContants.FETCH_TASK,
+    type: taskConstants.FETCH_TASK,
+    payload: {
+      params,
+    },
   };
 };
 
 export const fetchListTaskSuccess = data => {
   return {
-    type: taskContants.FETCH_TASK_SUCCESS,
+    type: taskConstants.FETCH_TASK_SUCCESS,
     payload: {
       data,
     },
@@ -19,27 +21,116 @@ export const fetchListTaskSuccess = data => {
 
 export const fetchListTaskFailed = error => {
   return {
-    type: taskContants.FETCH_TASK_FAILED,
+    type: taskConstants.FETCH_TASK_FAILED,
     payload: {
       error,
     },
   };
 };
 
-export const fetchListTaskRequest = () => {
-  return dispatch => {
-    dispatch(fetchListTask());
-    taskApis
-      .getList()
-      .then(resp => {
-        // lấy data từ debugger.json
-        const { data } = resp;
-        dispatch(fetchListTaskSuccess(data));
-        console.log('data: ', data);
-      })
-      .catch(error => {
-        dispatch(fetchListTaskFailed(error));
-        console.log('error: ', error);
-      });
+export const filterTask = keyword => ({
+  type: taskConstants.FILTER_TASK,
+  payload: {
+    keyword,
+  },
+});
+
+export const filterTaskSuccess = data => ({
+  type: taskConstants.FILTER_TASK_SUCCESS,
+  payload: {
+    data,
+  },
+});
+
+export const addTask = (title, description) => {
+  return {
+    type: taskConstants.ADD_TASK,
+    payload: {
+      title,
+      description,
+    },
+  };
+};
+
+export const addTaskSuccess = data => {
+  return {
+    type: taskConstants.ADD_TASK_SUCCESS,
+    payload: {
+      data,
+    },
+  };
+};
+
+export const addTaskFailed = error => {
+  return {
+    type: taskConstants.ADD_TASK_FAILED,
+    payload: {
+      error,
+    },
+  };
+};
+
+export const setTaskEditing = task => {
+  return {
+    type: taskConstants.SET_TASK_EDITING,
+    payload: {
+      task,
+    },
+  };
+};
+
+export const updateTask = (title, description, status = STATUSES[0].value) => {
+  return {
+    type: taskConstants.UPDATE_TASK,
+    payload: {
+      title,
+      description,
+      status,
+    },
+  };
+};
+
+export const updateTaskSuccess = data => {
+  return {
+    type: taskConstants.UPDATE_TASK_SUCCESS,
+    payload: {
+      data,
+    },
+  };
+};
+
+export const updateTaskFailed = error => {
+  return {
+    type: taskConstants.UPDATE_TASK_FAILED,
+    payload: {
+      error,
+    },
+  };
+};
+
+export const deleteTask = id => {
+  return {
+    type: taskConstants.DELETE_TASK,
+    payload: {
+      id,
+    },
+  };
+};
+
+export const deleteTaskSuccess = data => {
+  return {
+    type: taskConstants.DELETE_TASK_SUCCESS,
+    payload: {
+      data,
+    },
+  };
+};
+
+export const deleteTaskFailed = error => {
+  return {
+    type: taskConstants.DELETE_TASK_FAILED,
+    payload: {
+      error,
+    },
   };
 };

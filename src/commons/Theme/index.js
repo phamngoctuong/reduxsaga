@@ -1,18 +1,21 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-//Dùng để khai báo tất cả các CSS nào dùng chung
+
 const theme = createMuiTheme({
   color: {
     primary: '#D32F2F',
     secondary: '#00BCD4',
-    error: '#F44336',
+    error: '#E64A19',
+    textColor: '#FFFFFF',
+    defaultTextColor: '#000000',
+    hover: 'rgba(0,0,0,0.08)',
   },
-  typography: {
+  typoraphy: {
     fontFamily: 'Roboto',
   },
   shape: {
     borderRadius: 4,
     backgroundColor: '#7B1FA2',
-    textColor: 'white',
+    textColor: '#FFFFFF',
     border: '#CCCCCC',
   },
 });
