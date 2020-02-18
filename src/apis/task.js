@@ -1,7 +1,9 @@
-import axiosService from './../commons/axiosService';
-import { API_ENDPOINT } from './../constants';
+import axiosServices from './../commons/axiosService';
+import { API_ENDPOINT } from './../constants/Index';
+
 // http://localhost:3000/tasks
 const url = 'tasks';
+
 export const getList = () => {
-  return axiosService.get(`${API_ENDPOINT}/${url}`);
+  return axiosServices.get(`${API_ENDPOINT}/${url}`);
 };
